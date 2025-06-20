@@ -1,68 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Suggest a Song</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            body {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: black;
+            }
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Suggest a Song</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <style>
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: black;
-    }
+            .form-container {
+                background: white;
+                padding: 30px;
+                border-radius: 10px;
+                width: 100%;
+                max-width: 400px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
 
-    .form-container {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-  </style>
-</head>
+    <body>
+        <div class="form-container">
+            <h4 class="text-center mb-4">Suggest Your Song</h4>
+            <form onsubmit="handleSubmit(event)">
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input id="name" type="text" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input id="email" type="email" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Mobile Number</label>
+                    <input id="mobile" type="tel" class="form-control" required />
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Song Name</label>
+                    <input id="songname" type="text" class="form-control" required />
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+        </div>
 
-<body>
-  <div class="form-container">
-    <h4 class="text-center mb-4">Suggest Your Song</h4>
-    <form onsubmit="handleSubmit(event)">
-      <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input id="name" type="text" class="form-control" required />
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Email</label>
-        <input id="email" type="email" class="form-control" required />
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Mobile Number</label>
-        <input id="mobile" type="tel" class="form-control" required />
-      </div>
-      <div class="mb-3">
-        <label class="form-label">Song Name</label>
-        <input id="songname" type="text" class="form-control" required />
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Submit</button>
-    </form>
-  </div>
+        <script>
+            // function handleSubmit(event) {
+            //   event.preventDefault();
+            //   const name = document.getElementById("name").value;
+            //   const email = document.getElementById("email").value;
+            //   const mobile = document.getElementById("mobile").value;
+            //   const songname = document.getElementById("songname").value;
 
-  <script>
-    function handleSubmit(event) {
-      event.preventDefault();
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const mobile = document.getElementById("mobile").value;
-      const songname = document.getElementById("songname").value;
+            //   localStorage.setItem("userDetails", JSON.stringify({ name, email, mobile, songname }));
 
-      localStorage.setItem("userDetails", JSON.stringify({ name, email, mobile, songname }));
-
-      window.location.href = "https://webscansongs.onrender.com/details.html";
-    }
-  </script>
-</body>
-
+            //   window.location.href = "https://webscansongs.onrender.com/details.html";
+            // }
+            function handleSubmit(event) {
+                event.preventDefault();
+                const name = document.getElementById("name").value;
+                const email = document.getElementById("email").value;
+                const mobile = document.getElementById("mobile").value;
+                const songname = document.getElementById("songname").value;
+                const userData = {name, email, mobile, songname};
+                localStorage.setItem("userDetails", JSON.stringify(userData));
+                const blob = new Blob([JSON.stringify(userData, null, 2)], {type: "application/json"});
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement("a");
+                a.href = url;
+                a.download = "user_song_data.json";
+                a.click();
+                URL.revokeObjectURL(url);
+                window.location.href = "https://webscansongs.onrender.com/details.html";
+            }
+        </script>
+    </body>
 </html>
