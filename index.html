@@ -5,39 +5,62 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Scan Songs</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="style.css" />
         <style>
             body {
                 min-height: 100vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: black;
+                background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             }
 
             .qr-container {
                 text-align: center;
-                background: white;
-                padding: 30px;
-                border-radius: 12px;
-                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                background: rgba(255,255,255,0.95);
+                padding: 40px 32px 32px 32px;
+                border-radius: 18px;
+                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+                transition: transform 0.2s, box-shadow 0.2s;
+            }
+
+            .qr-container:hover {
+                transform: translateY(-4px) scale(1.03);
+                box-shadow: 0 16px 40px 0 rgba(31, 38, 135, 0.22);
             }
 
             .qr-code {
                 width: 200px;
-                margin: 20px auto;
+                margin: 20px auto 0 auto;
+                border-radius: 12px;
+                box-shadow: 0 2px 12px rgba(44, 62, 80, 0.12);
+            }
+
+            .brand-title {
+                font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+                font-weight: 700;
+                letter-spacing: 1px;
+                color: #1e3c72;
+            }
+
+            .text-muted {
+                color: #6c757d !important;
             }
         </style>
     </head>
 
     <body>
         <div class="qr-container">
-            <h4 class="mb-3">Scan QR Code to Access Songs</h4>
+            <img src="/home/motract/Documents/aayan-project/songwebpage/images/download.jpeg" alt="Logo" style="max-width: 120px; margin-bottom: 18px;" />
+            <h4 class="brand-title mb-3">Scan QR Code to give <br/> your Songs Suggestion</h2>
             <a href="https://webscansongs.onrender.com/form.html">
                 <img
+                    class="qr-code"
                     src="https://api.qrserver.com/v1/create-qr-code/?data=https://webscansongs.onrender.com&size=200x200"
+                    alt="QR Code"
                 />
             </a>
-            <p class="text-muted mt-2">Click the QR code to simulate a scan</p>
+            <p class="text-muted mt-3">Click the QR code to simulate a scan</p>
         </div>
     </body>
 </html>
