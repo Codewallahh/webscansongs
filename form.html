@@ -11,7 +11,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background-color: black;
+                background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             }
 
             .form-container {
@@ -50,23 +50,33 @@
         </div>
 
         <script>
-            function handleSubmit(event) {
-                event.preventDefault();
-                const name = document.getElementById("name").value;
-                const email = document.getElementById("email").value;
-                const mobile = document.getElementById("mobile").value;
-                const songname = document.getElementById("songname").value;
-                const userData = {name, email, mobile, songname};
-                localStorage.setItem("userDetails", JSON.stringify(userData));
-                const blob = new Blob([JSON.stringify(userData, null, 2)], {type: "application/json"});
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = "user_song_data.json";
-                a.click();
-                URL.revokeObjectURL(url);
-                window.location.href = "https://webscansongs.onrender.com/details.html";
-            }
-        </script>
+  async function handleSubmit(event) {
+    event.preventDefault();
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
+    const songname = document.getElementById("songname").value;
+
+    const userData = { name, email, mobile, songname };
+
+    try {
+      const response = await fetch("http://localhost:3000/submit-song", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(userData)
+      });
+
+      if (response.ok) {
+        window.location.href = "thankyou.html";
+      } else {
+        alert("Error saving data.");
+      }
+    } catch (err) {
+      alert("Server error. Try again later.");
+      console.error(err);
+    }
+  }
+</script>
+
     </body>
 </html>
