@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>User Details</title>
+  <title>Suggest a Song</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
   <style>
     body {
@@ -28,7 +28,7 @@
 
 <body>
   <div class="form-container">
-    <h4 class="text-center mb-4">Enter Your Details</h4>
+    <h4 class="text-center mb-4">Suggest Your Song</h4>
     <form onsubmit="handleSubmit(event)">
       <div class="mb-3">
         <label class="form-label">Name</label>
@@ -42,6 +42,10 @@
         <label class="form-label">Mobile Number</label>
         <input id="mobile" type="tel" class="form-control" required />
       </div>
+      <div class="mb-3">
+        <label class="form-label">Song Name</label>
+        <input id="songname" type="text" class="form-control" required />
+      </div>
       <button type="submit" class="btn btn-primary w-100">Submit</button>
     </form>
   </div>
@@ -49,14 +53,13 @@
   <script>
     function handleSubmit(event) {
       event.preventDefault();
-      // Save data in localStorage (to use on details.html)
       const name = document.getElementById("name").value;
       const email = document.getElementById("email").value;
       const mobile = document.getElementById("mobile").value;
+      const songname = document.getElementById("songname").value;
 
-      localStorage.setItem("userDetails", JSON.stringify({ name, email, mobile }));
+      localStorage.setItem("userDetails", JSON.stringify({ name, email, mobile, songname }));
 
-      // Redirect to details page
       window.location.href = "details.html";
     }
   </script>

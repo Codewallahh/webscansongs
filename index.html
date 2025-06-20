@@ -2,44 +2,43 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scan Songs</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: black;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scan Songs</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: black;
+    }
 
-        .qr-container {
-            text-align: center;
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        }
+    .qr-container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
 
-        .qr-code {
-            width: 200px;
-            margin: 20px auto;
-        }
-    </style>
+    .qr-code {
+      width: 200px;
+      margin: 20px auto;
+    }
+  </style>
 </head>
 
 <body>
-    <div class="qr-container">
-        <h4 class="mb-3">Scan QR Code to Access Songs</h4>
-        <!-- Simulated QR code -->
-        <a href="form.html">
-            <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=form.html&size=200x200"
-                alt="QR Code to Scan" />
-        </a>
-        <p class="text-muted mt-2">Click the QR code (simulate scan)</p>
-    </div>
+  <div class="qr-container">
+    <h4 class="mb-3">Scan QR Code to Access Songs</h4>
+    <a href="form.html">
+      <img class="qr-code" src="https://api.qrserver.com/v1/create-qr-code/?data=form.html&size=200x200"
+        alt="QR Code" />
+    </a>
+    <p class="text-muted mt-2">Click the QR code to simulate a scan</p>
+  </div>
 </body>
 
 </html>
